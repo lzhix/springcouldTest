@@ -1,0 +1,20 @@
+#指定端口号
+server:
+    port: 5000
+#指定服务名称
+spring:
+    application:
+        name: eureka-server
+#引用security依赖时需要配置，反之不需要
+security:
+    user:
+     name: admin
+     password: 123456
+eureka:
+  instance:
+    hostname: localhost  #eureka server 单个 主机地址就是localhost
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    register-with-eureka: false    #默认为true,ture:需要向注册中心注册自己的服务信息  false: 本身就是服务注册中心，自然不需要自己向自己注册
+    fetch-registry: false          # 表示我就是服务注册中心，我的职责是维护注册的实例，不需要去检索服务

@@ -1,0 +1,24 @@
+server:
+  port: 6002
+spring:
+  application:
+    name: springbootConfig
+  profiles:
+    active: subversion
+  cloud:
+    config:
+      server:
+        svn:
+          uri: https://192.168.9.144/gs-sbf-yh/development/sbf-tyzs/tags/bak/test/
+          username: lzhix
+          password: lzx404697204
+          default-label:
+  eureka:
+    client:
+      service-url:
+        defaultZone: http://localhost:5000/eureka/
+    instance:
+      preferIpAddress: true
+      instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+      lease-expiration-duration-in-seconds: 30
+      lease-renewal-interval-in-seconds: 30
